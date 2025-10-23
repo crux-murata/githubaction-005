@@ -34,6 +34,9 @@ jobs:
         run: |
           echo "Deploying to $SRC_DIR...";
 
+      - name: Debug SRC DIR
+        run: echo "DIR is ${{ env.SRC_DIR }"
+
       - name: Upload via SCP
         uses: appleboy/scp-action@v0.1.7
         with:
