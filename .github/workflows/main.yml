@@ -32,3 +32,4 @@ jobs:
           debug: true
           source: ${{ vars.DEPLOY_DIR }}/*
           target: "/srv/www/vhosts/default/htdocs/"
+          strip_components: 1
