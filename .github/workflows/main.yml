@@ -22,21 +22,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Default SRC DIR
-        run: echo "Default"
-        env:
-          SRC_DIR: "./trunk/"
-
-      - name: Deploy to develop
-        if: ${{ vars.DEPLOY_DIR == 'develop' }}
-        env:
-          SRC_DIR: "./develop/"
-        run: |
-          echo "Deploying to $SRC_DIR...";
-
-      - name: Debug SRC DIR
-        run: echo "DIR is ${{ env.SRC_DIR }}"
-
       - name: Upload via SCP
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -44,5 +29,5 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
-          source: $SRC_DIR
+          source: "./${{ vars.DEPLOY_DIR }}/"
           target: "/srv/www/vhosts/default/htdocs/"
