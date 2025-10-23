@@ -41,5 +41,5 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
-          source: "./${{ SRC_DIR }}/"
+          source: "./${{ env.SRC_DIR }}/"
           target: "/srv/www/vhosts/default/htdocs/"
