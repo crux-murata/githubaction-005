@@ -29,5 +29,5 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
-          source: "./${{ vars.DEPLOY_DIR }}/"
+          source: "./${{ vars.DEPLOY_DIR }}/."
           target: "/srv/www/vhosts/default/htdocs/"
