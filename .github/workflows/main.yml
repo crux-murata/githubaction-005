@@ -22,7 +22,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Default SRC DIR
-        env:
-          SRC_DIR: "trunk"
-
+      - name: Upload via SCP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          source: "./"
+          target: "/srv/www/vhosts/default/htdocs/"
